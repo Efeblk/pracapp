@@ -39,10 +39,6 @@ class SystemApi {
       required String name}) async {
     try {
       String apiEndpoint = "$baseUrl/register";
-
-      print(username);
-      print(name);
-      print(password);
       final Dio dio = Dio();
       var formData = FormData.fromMap({
         'email': username,

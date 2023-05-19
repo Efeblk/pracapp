@@ -71,6 +71,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       body: Column(
         children: [
           InkWell(
+              highlightColor: Colors.green,
               onTap: () {
                 _showActionSheet(context);
               },
@@ -88,11 +89,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 },
               )
             ],
-          ),
-          Divider(),
-          ElevatedButton(
-            child: Text('Hello World'),
-            onPressed: () {},
           ),
         ],
       ),
