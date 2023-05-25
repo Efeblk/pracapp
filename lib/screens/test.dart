@@ -98,44 +98,51 @@ class _ScrollDownNewsPageState extends State<ScrollDownNewsPage> {
                 }
               } else {
                 final article = newsList[index];
-                return ListTile(
-                  leading: Icon(Icons.article_outlined),
-                  title: Text(
-                    article.title,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16.0,
+                return Card(
+                  elevation: 4.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          article.title,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
+                        ),
+                        SizedBox(height: 8.0),
+                        Text(
+                          article.source.name,
+                          style: TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                        SizedBox(height: 8.0),
+                        Text(
+                          article.description,
+                          style: TextStyle(
+                            fontSize: 14.0,
+                          ),
+                        ),
+                        SizedBox(height: 8.0),
+                        Container(
+                          width: double.infinity,
+                          height: 150.0,
+                          color: Colors.grey[300], // Placeholder color
+                        ),
+                      ],
                     ),
                   ),
-                  subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: 4.0),
-                      Text(
-                        article.source.name,
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.grey[600],
-                        ),
-                      ),
-                      SizedBox(height: 8.0),
-                      Text(
-                        article.description,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: 14.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                  onTap: () {
-                    // Handle article tap
-                  },
                 );
               }
             },
-            separatorBuilder: (context, index) => Divider(height: 1.0),
+            separatorBuilder: (context, index) => SizedBox(height: 8.0),
           ),
           if (isError)
             Positioned.fill(
