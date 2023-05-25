@@ -19,6 +19,7 @@ dependencies:
   dio: ^5.1.1
   flex_color_scheme: ^7.0.4
   animate_do: ^3.0.2
+  http: ^1.0.0
 
 dev_dependencies:
   flutter_test:

@@ -5,6 +5,7 @@ import '../screens/initial_screen.dart';
 import '../screens/static_screens/about_screen.dart';
 import '../screens/static_screens/contact_screen.dart';
 import '../screens/static_screens/settings_screen.dart';
+import '../screens/test.dart';
 import '../screens/user/login_screen.dart';
 import '../screens/user/register_screen.dart';
 import '../screens/user/welcome_screen.dart';
@@ -23,7 +24,7 @@ final routes = GoRouter(
     ),
     GoRoute(
       path: '/home',
-      builder: (context, state) => HomeScreen(),
+      builder: (context, state) => ScrollDownNewsPage(),
     ),
     // User Screens
     GoRoute(
