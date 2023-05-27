@@ -5,6 +5,56 @@ import 'package:go_router/go_router.dart';
 import 'api/system_api.dart';
 import 'localizations/localizations.dart';
 
+class TicketsScreen extends StatefulWidget {
+  @override
+  _TicketsScreenState createState() => _TicketsScreenState();
+}
+
+class _TicketsScreenState extends State<TicketsScreen> {
+  final SystemApi _api = SystemApi();
+  List<String> _tickets = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadTickets();
+  }
+
+  Future<void> _loadTickets() async {
+    final List<String> tickets = await _api.getTickets();
+
+    setState(() {
+      _tickets = tickets;
+    });
+
+    if (tickets.isEmpty) {
+      // No tickets to show, navigate to SendTicketScreen
+      GoRouter.of(context).push('/sendticket');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Tickets'),
+      ),
+      body: ListView.builder(
+        itemCount: _tickets.length,
+        itemBuilder: (context, index) {
+          final ticket = _tickets[index];
+          return ListTile(
+            title: Text(ticket),
+            onTap: () {
+              // Implement the logic to handle tapping on a ticket
+            },
+          );
+        },
+      ),
+    );
+  }
+}
+
 class SendTicketScreen extends StatelessWidget {
   final SystemApi _api = SystemApi();
 
@@ -68,7 +118,7 @@ class SendTicketScreen extends StatelessWidget {
 
                 if (isTicketSent) {
                   // Ticket sent successfully, navigate to the TicketsScreen
-                  GoRouter.of(context).push('/sendticket');
+                  GoRouter.of(context).push('/tickets');
                 } else {
                   // Failed to send ticket, show an error message
                   showDialog(
@@ -91,51 +141,6 @@ class SendTicketScreen extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class TicketsScreen extends StatefulWidget {
-  @override
-  _TicketsScreenState createState() => _TicketsScreenState();
-}
-
-class _TicketsScreenState extends State<TicketsScreen> {
-  final SystemApi _api = SystemApi();
-  List<String> _tickets = [];
-
-  @override
-  void initState() {
-    super.initState();
-    _loadTickets();
-  }
-
-  Future<void> _loadTickets() async {
-    final List<String> tickets = await _api.getTickets();
-
-    setState(() {
-      _tickets = tickets;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Tickets'),
-      ),
-      body: ListView.builder(
-        itemCount: _tickets.length,
-        itemBuilder: (context, index) {
-          final ticket = _tickets[index];
-          return ListTile(
-            title: Text(ticket),
-            onTap: () {
-              // Implement the logic to handle tapping on a ticket
-            },
-          );
-        },
       ),
     );
   }

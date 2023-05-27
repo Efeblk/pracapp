@@ -130,7 +130,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             SizedBox(height: 24.0),
             Center(
               child: InkWell(
-                onTap: () => GoRouter.of(context).push('/sendticket'),
+                onTap: () => GoRouter.of(context).push('/tickets'),
                 child: Container(
                   padding: EdgeInsets.all(16.0),
                   decoration: BoxDecoration(

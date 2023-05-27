@@ -118,7 +118,6 @@ class SystemApi {
         apiEndpoint,
         data: formData,
       );
-
       if (response.statusCode == 200) {
         var data = response.data;
         if (data['success']) {
