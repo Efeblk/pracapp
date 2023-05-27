@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
+import 'package:pracapp/ticket_screen.dart';
 
-import '../screens/home_screen.dart';
 import '../screens/initial_screen.dart';
 import '../screens/static_screens/about_screen.dart';
 import '../screens/static_screens/contact_screen.dart';
@@ -48,5 +48,13 @@ final routes = GoRouter(
       path: '/settings',
       builder: (context, state) => SettingsScreen(),
     ),
+    GoRoute(
+      path: '/sendticket',
+      builder: (context, state) => SendTicketScreen(),
+    ),
+    GoRoute(
+      path: '/tickets',
+      builder: (context, state) => TicketsScreen(),
+    )
   ],
 );

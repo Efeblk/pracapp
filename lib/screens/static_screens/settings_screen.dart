@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../bloc/settings/settings_cubit.dart';
 import '../../localizations/localizations.dart';
@@ -31,8 +32,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
             AppLocalizations.of(context).getTranslate('language_selection2')),
         actions: <CupertinoActionSheetAction>[
           CupertinoActionSheetAction(
-            /// This parameter indicates the action would be a default
-            /// defualt behavior, turns the action's text to bold text.
             isDefaultAction: true,
             onPressed: () {
               settings.changeLanguage("tr");
@@ -48,9 +47,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
             child: const Text('English'),
           ),
           CupertinoActionSheetAction(
-            /// This parameter indicates the action would perform
-            /// a destructive action such as delete or exit and turns
-            /// the action's text color to red.
             isDestructiveAction: true,
             onPressed: () {
               Navigator.pop(context);
@@ -89,6 +85,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 },
               )
             ],
+          ),
+          InkWell(
+            child: Icon(Icons.accessible_outlined),
+            onTap: () => GoRouter.of(context).push('/sendticket'),
           ),
         ],
       ),

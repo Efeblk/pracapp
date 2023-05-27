@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:iconsax/iconsax.dart';
 
 import '../api/news_api.dart';
 
@@ -51,7 +53,7 @@ class _ScrollDownNewsPageState extends State<ScrollDownNewsPage> {
     if (_scrollController.position.pixels ==
         _scrollController.position.maxScrollExtent) {
       if (!isLoading) {
-        loadBitcoinArticles();
+        loadBitcoinArticles(); // Fetch new articles
       }
     }
   }
@@ -67,10 +69,19 @@ class _ScrollDownNewsPageState extends State<ScrollDownNewsPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Scroll Down News'),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: InkWell(
+              child: Icon(Iconsax.setting_2),
+              onTap: () => GoRouter.of(context).push('/settings'),
+            ),
+          ),
+        ],
       ),
       body: Stack(
         children: [
-          ListView.separated(
+          ListView.builder(
             controller: _scrollController,
             itemCount: newsList.length + 1,
             itemBuilder: (context, index) {
@@ -130,19 +141,12 @@ class _ScrollDownNewsPageState extends State<ScrollDownNewsPage> {
                             fontSize: 14.0,
                           ),
                         ),
-                        SizedBox(height: 8.0),
-                        Container(
-                          width: double.infinity,
-                          height: 150.0,
-                          color: Colors.grey[300], // Placeholder color
-                        ),
                       ],
                     ),
                   ),
                 );
               }
             },
-            separatorBuilder: (context, index) => SizedBox(height: 8.0),
           ),
           if (isError)
             Positioned.fill(

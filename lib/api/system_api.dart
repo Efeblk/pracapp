@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 class SystemApi {
   String baseUrl = "https://api.qline.app/api";
+  String authToken = "1|KnGJGkh96s86XIvDUGXvZb1m5Hy4OTNuhyOjg1qs";
   signIn(String username, String password) async {
     try {
       String apiEndpoint = "$baseUrl/login";
@@ -73,6 +75,63 @@ class SystemApi {
     } catch (e) {
       print(e);
       return null;
+    }
+  }
+
+  Future<List<String>> getTickets() async {
+    try {
+      String apiEndpoint = "$baseUrl/tickets";
+      final Dio dio = Dio();
+      dio.options.headers['Authorization'] = 'Bearer $authToken';
+
+      var response = await dio.get(apiEndpoint);
+
+      if (response.statusCode == 200) {
+        var data = response.data;
+        List<String> tickets = [];
+        for (var ticket in data['tickets']) {
+          tickets.add(ticket['title']);
+        }
+        return tickets;
+      } else {
+        return [];
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+      return [];
+    }
+  }
+
+  Future<bool> sendTicket(String title, String message, String topic) async {
+    try {
+      String apiEndpoint = "$baseUrl/tickets";
+      final Dio dio = Dio();
+      dio.options.headers['Authorization'] = 'Bearer $authToken';
+
+      var formData = FormData.fromMap({
+        'title': title,
+        'message': message,
+        'topic': topic,
+      });
+
+      var response = await dio.post(
+        apiEndpoint,
+        data: formData,
+      );
+
+      if (response.statusCode == 200) {
+        var data = response.data;
+        if (data['success']) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+      return false;
     }
   }
 }
