@@ -87,7 +87,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ],
           ),
           InkWell(
-            child: Icon(Icons.accessible_outlined),
+            child: Icon(Icons.add_alert_rounded),
             onTap: () => GoRouter.of(context).push('/sendticket'),
           ),
         ],
