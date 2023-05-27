@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'api/system_api.dart';
+import 'localizations/localizations.dart';
 
 class SendTicketScreen extends StatelessWidget {
   final SystemApi _api = SystemApi();
@@ -14,7 +15,8 @@ class SendTicketScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Send Ticket'),
+        title: Text(
+            '${AppLocalizations.of(context).getTranslate('sendticket')}: '),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
@@ -22,7 +24,7 @@ class SendTicketScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Subject',
+              '${AppLocalizations.of(context).getTranslate('subject')}: ',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
@@ -32,12 +34,13 @@ class SendTicketScreen extends StatelessWidget {
             TextField(
               controller: _subjectController,
               decoration: InputDecoration(
-                hintText: 'Enter subject',
+                hintText:
+                    '${AppLocalizations.of(context).getTranslate('subject')}: ',
               ),
             ),
             SizedBox(height: 16.0),
             Text(
-              'Description',
+              '${AppLocalizations.of(context).getTranslate('description')}: ',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
@@ -48,7 +51,8 @@ class SendTicketScreen extends StatelessWidget {
               controller: _descriptionController,
               maxLines: 5,
               decoration: InputDecoration(
-                hintText: 'Enter description',
+                hintText:
+                    '${AppLocalizations.of(context).getTranslate('description')}: ',
                 border: OutlineInputBorder(),
               ),
             ),
@@ -82,7 +86,8 @@ class SendTicketScreen extends StatelessWidget {
                   );
                 }
               },
-              child: Text('Send Ticket'),
+              child: Text(
+                  '${AppLocalizations.of(context).getTranslate('sendticket')}: '),
             ),
           ],
         ),

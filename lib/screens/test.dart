@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../api/news_api.dart';
+import '../localizations/localizations.dart';
 
 class ScrollDownNewsPage extends StatefulWidget {
   @override
@@ -68,7 +69,8 @@ class _ScrollDownNewsPageState extends State<ScrollDownNewsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Scroll Down News'),
+        title:
+            Text('${AppLocalizations.of(context).getTranslate('homepage')}: '),
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),

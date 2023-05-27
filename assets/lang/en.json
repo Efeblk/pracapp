@@ -25,5 +25,9 @@
     "logout_confirm": "Are you sure you want to log out?",
     "warning": "Warning",
     "close": "Close",
-    "register_failed": "Register Failed"
+    "register_failed": "Register Failed",
+    "homepage":"News",
+    "sendticket": "Send Ticket",
+    "subject": "Subject",
+    "description": "Description"
 }

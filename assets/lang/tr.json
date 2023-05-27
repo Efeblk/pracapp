@@ -25,5 +25,9 @@
     "logout_confirm": "Oturmunuzu Kapatmak istediğinizden eminmisiniz?",
     "warning": "Uyari",
     "close": "Kapat",
-    "register_failed": "Kayit hatali, tekrardan kontrol ediniz."
+    "register_failed": "Kayit hatali, tekrardan kontrol ediniz.",
+    "homepage": "Haberler",
+    "sendticket": "Ticket Gönder",
+    "subject": "Konu",
+    "description": "Açiklama"
 }
