@@ -145,6 +145,26 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
               ),
             ),
+            Center(
+              child: InkWell(
+                onTap: () {
+                  settings.userLogout();
+                  GoRouter.of(context).replace("/");
+                },
+                child: Container(
+                  padding: EdgeInsets.all(16.0),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.blue,
+                  ),
+                  child: Icon(
+                    Icons.exit_to_app,
+                    size: 48.0,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
